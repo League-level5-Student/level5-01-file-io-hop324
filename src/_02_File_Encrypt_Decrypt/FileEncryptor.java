@@ -44,7 +44,7 @@ public class FileEncryptor {
 			}
 		}
 		
-		writer.write();
+		writer.write(shiftedMessage);
 		writer.close();
 		}
 		catch (IOException e) {
