@@ -12,7 +12,7 @@ public class DirectoryIterator {
 		 */
 		JFileChooser jfc = new JFileChooser();
 		jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-		int returnVal = jfc.showOpenDialog(null);
+		/*int returnVal = jfc.showOpenDialog(null);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			File directory = jfc.getSelectedFile();
 			File[] files = directory.listFiles();
@@ -21,7 +21,7 @@ public class DirectoryIterator {
 				  System.out.println(f.getAbsolutePath());
 				}
 			}
-		}
+		}*/
 		
 		/*
 		 * Your task is to write a program that iterates through the src folder of this current Java Project. 
@@ -29,5 +29,20 @@ public class DirectoryIterator {
 		 * Be aware of possible directories inside of directories.
 		 * (e.g //Copyright © 2019 FirstName LastName)
 		 */
+		int returnValue = jfc.showOpenDialog(null);
+		if (returnValue == JFileChooser.APPROVE_OPTION)  {
+			File directory = jfc.getSelectedFile();
+			File[] files = directory.listFiles();
+			if(files != null) {
+				for(File f : files) {
+					//if(f.getAbsoluteFile().getName().contains(".java")) {
+						
+						//System.out.println(f.getAbsoluteFile().getAbsolutePath());
+						File converter = f.getAbsoluteFile();
+						System.out.println(converter.getAbsoluteFile().getAbsolutePath());
+					//}
+				}
+			}
+		}
 	}
 }
