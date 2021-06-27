@@ -1,6 +1,8 @@
 package _04_Directory_Iteration;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JFileChooser;
 
@@ -35,12 +37,19 @@ public class DirectoryIterator {
 			File[] files = directory.listFiles();
 			if(files != null) {
 				for(File f : files) {
-					//if(f.getAbsoluteFile().getName().contains(".java")) {
+					//System.out.println(f.getAbsolutePath());
+					if(f.getAbsoluteFile().getName().contains(".java")) {
 						
-						//System.out.println(f.getAbsoluteFile().getAbsolutePath());
-						File converter = f.getAbsoluteFile();
-						System.out.println(converter.getAbsoluteFile().getAbsolutePath());
-					//}
+						System.out.println(f.getAbsolutePath());
+						f.getAbsoluteFile().setWritable(true);
+						try {
+							FileWriter writer = new FileWriter(f.getAbsoluteFile(), true);
+							writer.write("//Copyright © 2021 Thomas Snyder");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				}
 			}
 		}
